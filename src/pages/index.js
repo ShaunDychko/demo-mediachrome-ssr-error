@@ -5,6 +5,13 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import * as styles from "../components/index.module.css"
+import {
+  MediaControlBar,
+  MediaController,
+  MediaMuteButton,
+  MediaPlayButton,
+  MediaTimeRange,
+} from "media-chrome/dist/react"
 
 const links = [
   {
@@ -96,6 +103,25 @@ const IndexPage = () => (
         Edit <code>src/pages/index.js</code> to update this page.
       </p>
     </div>
+    <MediaController>
+      <video
+        slot="media"
+        src="https://stream.mux.com/DS00Spx1CV902MCtPj5WknGlR102V5HFkDe/high.mp4"
+        crossOrigin="anonymous"
+      >
+        <track
+          label="thumbnails"
+          default
+          kind="metadata"
+          src="https://image.mux.com/DS00Spx1CV902MCtPj5WknGlR102V5HFkDe/storyboard.vtt"
+        />
+      </video>
+      <MediaControlBar>
+        <MediaPlayButton />
+        <MediaMuteButton />
+        <MediaTimeRange />
+      </MediaControlBar>
+    </MediaController>
     <ul className={styles.list}>
       {links.map(link => (
         <li key={link.url} className={styles.listItem}>
